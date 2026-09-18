@@ -9,5 +9,10 @@ public interface IDamagable
 public interface IEnemyBehaviour
 {
     void Initialize(EnemySO enemySO);
-    void Move();
+    void Move(float moveSpeed, Rigidbody2D rigidbody2D);
+}
+
+public interface IAttacker
+{
+    void DealDamage(float damage, IDamagable target);
 }
