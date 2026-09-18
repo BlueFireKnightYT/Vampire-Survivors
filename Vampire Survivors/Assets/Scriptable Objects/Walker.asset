@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Walker
   m_EditorClassIdentifier: Assembly-CSharp::EnemySO
   objectName: Walker
-  sprite: {fileID: 0}
-  health: 10
+  animator: {fileID: 9100000, guid: 7ad348ee58066f843be0636d4520fe34, type: 2}
+  health: 4
   damage: 4
   speed: 3
   xp: 1
