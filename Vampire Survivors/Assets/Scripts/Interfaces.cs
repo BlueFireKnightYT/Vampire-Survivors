@@ -8,6 +8,6 @@ public interface IDamagable
 
 public interface IEnemyBehaviour
 {
-    void Initialize(EnemySO enemyData);
+    void Initialize(EnemySO enemySO);
     void Move();
 }

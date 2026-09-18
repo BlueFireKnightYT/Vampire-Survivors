@@ -7,14 +7,23 @@ public class Enemy : MonoBehaviour, IDamagable //Dit is waar je de interface ref
     //Deze maakt gebruik van interfaces
     //Hier worden functies voor IEDERE enemy gemaakt
 
-    public EnemySO enemyData;
+    public EnemySO enemySO;
     private IEnemyBehaviour enemyBehaviour;
 
     private float health;
 
-    private void Start()
+    private void Awake()
     {
-        health = enemyData.health;
+        if(TryGetComponent<IEnemyBehaviour>(out enemyBehaviour))
+        {
+            enemyBehaviour.Initialize(enemySO);
+        }
+        else
+        {
+            Debug.LogWarning("No Scriptable Object found on " + gameObject.name);
+        }
+
+        health = enemySO.health;
     }
 
     private void Update()
@@ -23,6 +32,11 @@ public class Enemy : MonoBehaviour, IDamagable //Dit is waar je de interface ref
         {
             TakeDamage(1);
         }
+    }
+
+    private void FixedUpdate()
+    {
+        enemyBehaviour.Move();
     }
 
     public void TakeDamage(float damage)
