@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour, IDamagable, IAttacker //Dit is waar je de in
 
     public EnemySO enemySO;
     SpriteRenderer sr;
+    Animator animator;
     Rigidbody2D rb;
     IEnemyBehaviour enemyBehaviour;
 
@@ -30,9 +31,11 @@ public class Enemy : MonoBehaviour, IDamagable, IAttacker //Dit is waar je de in
 
         sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
 
         health = enemySO.health;
         damage = enemySO.damage;
+        animator.runtimeAnimatorController = enemySO.animator;
     }
 
    void Update()

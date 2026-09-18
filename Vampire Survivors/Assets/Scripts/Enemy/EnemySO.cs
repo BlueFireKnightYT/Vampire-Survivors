@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySO : ScriptableObject
 {
     public string objectName;
-    public Sprite sprite;
+    public RuntimeAnimatorController animator;
 
     public float health;
     public float damage;
