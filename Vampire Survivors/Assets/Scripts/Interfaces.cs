@@ -27,3 +27,8 @@ public interface IWeapon
 {
     void AutoShoot();
 }
+
+public interface IPickupable
+{
+    void pickupObject();
+}

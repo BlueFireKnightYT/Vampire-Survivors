@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MagicMissileWeapon : MonoBehaviour, IWeapon
@@ -7,6 +8,8 @@ public class MagicMissileWeapon : MonoBehaviour, IWeapon
     [SerializeField] float damage;
     float remainingCooldown;
     float searchRadius = 15;
+
+    int level = 1;
 
     Transform targetPos;
     [SerializeField] GameObject bulletPrefab;
@@ -77,5 +80,23 @@ public class MagicMissileWeapon : MonoBehaviour, IWeapon
         Debug.Log(nearestEnemy.name);
         
         return nearestEnemy;
+    }
+
+    void LevelUp()
+    {
+        // + 1 level
+        // +20% damage
+        // + 1 bullet every 2 levels
+        // - 5% cooldown
+        // max level = level 6
+        if (level < 6)
+        {
+            level++;
+            damage *= 1.2f;
+            shootCooldown *= 0.95f;
+
+            int result = level % 2;
+            if (result == 0) baseBulletAmount++;
+        }
     }
 }

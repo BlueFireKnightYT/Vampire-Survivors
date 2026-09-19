@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Xml.XPath;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,6 +14,8 @@ public class Enemy : MonoBehaviour, IDamagable, IAttacker, IDroppable //Dit is w
     Animator animator;
     Rigidbody2D rb;
     IEnemyBehaviour enemyBehaviour;
+    GameObject player;
+    PlayerXpSystem xpSystem;
 
     IDamagable playerDamagable;
 
@@ -20,12 +24,10 @@ public class Enemy : MonoBehaviour, IDamagable, IAttacker, IDroppable //Dit is w
     float damage;
 
     float dropRate;
-    int xpAmount;
-    GameObject dropObject;
 
     void Awake()
     {
-        if(TryGetComponent<IEnemyBehaviour>(out enemyBehaviour))
+        if (TryGetComponent<IEnemyBehaviour>(out enemyBehaviour))
         {
             enemyBehaviour.Initialize(enemySO);
         }
@@ -37,13 +39,15 @@ public class Enemy : MonoBehaviour, IDamagable, IAttacker, IDroppable //Dit is w
         sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        xpSystem = player.GetComponent<PlayerXpSystem>();
+
 
         maxHealth = enemySO.health;
         health = maxHealth;
         damage = enemySO.damage;
         animator.runtimeAnimatorController = enemySO.animator;
         dropRate = enemySO.dropPercentage;
-        dropObject = enemySO.dropObject;
     }
 
     void Update()
@@ -90,11 +94,27 @@ public class Enemy : MonoBehaviour, IDamagable, IAttacker, IDroppable //Dit is w
 
         if (chance <= dropRate)
         {
-            Drop(dropObject);
+            GameObject xpOrb = pooledXpOrb();
+            
+            Drop(xpOrb);
         }
 
         health = maxHealth;
         this.gameObject.SetActive(false);
+    }
+
+    GameObject pooledXpOrb()
+    {
+        GameObject foundEnemy = null;
+        foreach (GameObject xpOrb in xpSystem.xpOrbPool)
+        {
+            if (!xpOrb.activeSelf)
+            {
+                foundEnemy = xpOrb;
+                break;
+            }
+        }
+        return foundEnemy;
     }
 
 
@@ -110,6 +130,8 @@ public class Enemy : MonoBehaviour, IDamagable, IAttacker, IDroppable //Dit is w
 
     public void Drop(GameObject drop)
     {
-        GameObject droppedObject = Instantiate(drop, transform.position, Quaternion.identity);
+        drop.transform.position = transform.position;
+        drop.SetActive(true);
+        GameObject droppedObject = drop;
     }
 }
