@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5124747357231176841}
   - component: {fileID: 770105144984282762}
   - component: {fileID: 2830077638044381803}
-  - component: {fileID: 8865334474979790368}
+  - component: {fileID: -7694420035448125383}
   - component: {fileID: 1173091756950448885}
   - component: {fileID: 1247106667536187439}
   - component: {fileID: 3903294503528837721}
@@ -123,8 +123,8 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &8865334474979790368
-BoxCollider2D:
+--- !u!58 &-7694420035448125383
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -157,18 +157,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.13934994}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1, y: 0.7213001}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.5
 --- !u!114 &1173091756950448885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,7 +194,7 @@ Animator:
   m_GameObject: {fileID: 2041579427211575244}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ad348ee58066f843be0636d4520fe34, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

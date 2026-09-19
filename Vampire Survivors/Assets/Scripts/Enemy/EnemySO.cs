@@ -12,6 +12,7 @@ public class EnemySO : ScriptableObject
     public float speed;
 
     public int xp;
+    public GameObject dropObject;
     public int gold;
     public float dropPercentage;
 }

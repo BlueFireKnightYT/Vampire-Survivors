@@ -1,6 +1,7 @@
+using System.Collections;
 using UnityEngine;
 
-public class MagicMissileWeapon : MonoBehaviour
+public class MagicMissileWeapon : MonoBehaviour, IWeapon
 {
     [SerializeField] float shootCooldown;
     [SerializeField] float damage;
@@ -9,6 +10,8 @@ public class MagicMissileWeapon : MonoBehaviour
 
     Transform targetPos;
     [SerializeField] GameObject bulletPrefab;
+    public int baseBulletAmount;
+    public float multiShotCooldown;
 
     [SerializeField] LayerMask enemyLayer;
 
@@ -17,17 +20,25 @@ public class MagicMissileWeapon : MonoBehaviour
         remainingCooldown = shootCooldown;
     }
 
-    private void Update()
+    public void AutoShoot()
     {
         remainingCooldown -= Time.deltaTime;
-
         if(remainingCooldown <= 0)
-        {
+        { 
+            StartCoroutine(MultiShoot());
             remainingCooldown = shootCooldown;
-            Shoot();
         }
     }
-
+    public IEnumerator MultiShoot()
+    {
+        int bulletAmount = baseBulletAmount;
+        while (bulletAmount > 0)
+        {
+            Shoot();
+            bulletAmount--;
+            yield return new WaitForSeconds(multiShotCooldown);
+        }
+    }
     void Shoot()
     {
         targetPos = FindNearestEnemy();
@@ -64,6 +75,7 @@ public class MagicMissileWeapon : MonoBehaviour
             }
         }
         Debug.Log(nearestEnemy.name);
+        
         return nearestEnemy;
     }
 }

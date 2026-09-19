@@ -16,3 +16,14 @@ public interface IAttacker
 {
     void DealDamage(float damage, IDamagable target);
 }
+
+public interface IDroppable
+{
+    void DecideDrop();
+    void Drop(GameObject drop);
+}
+
+public interface IWeapon
+{
+    void AutoShoot();
+}

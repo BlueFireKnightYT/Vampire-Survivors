@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Enemy : MonoBehaviour, IDamagable, IAttacker //Dit is waar je de interface referenced
+public class Enemy : MonoBehaviour, IDamagable, IAttacker, IDroppable //Dit is waar je de interface referenced
 {
     //dit is het Basis Script
     //Deze maakt gebruik van interfaces
@@ -15,8 +15,13 @@ public class Enemy : MonoBehaviour, IDamagable, IAttacker //Dit is waar je de in
 
     IDamagable playerDamagable;
 
+    float maxHealth;
     float health;
     float damage;
+
+    float dropRate;
+    int xpAmount;
+    GameObject dropObject;
 
     void Awake()
     {
@@ -33,12 +38,15 @@ public class Enemy : MonoBehaviour, IDamagable, IAttacker //Dit is waar je de in
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
 
-        health = enemySO.health;
+        maxHealth = enemySO.health;
+        health = maxHealth;
         damage = enemySO.damage;
         animator.runtimeAnimatorController = enemySO.animator;
+        dropRate = enemySO.dropPercentage;
+        dropObject = enemySO.dropObject;
     }
 
-   void Update()
+    void Update()
     {
         if(Keyboard.current.spaceKey.wasPressedThisFrame)
         {
@@ -50,16 +58,19 @@ public class Enemy : MonoBehaviour, IDamagable, IAttacker //Dit is waar je de in
     {
         enemyBehaviour.Move(enemySO.speed, rb);
 
-        if(rb.linearVelocityX < 0) sr.flipX = true;
-        else if (rb.linearVelocityX > 0) sr.flipX = false;
+        if(rb.linearVelocityX < 0) 
+            sr.flipX = true;
+        else if (rb.linearVelocityX > 0) 
+            sr.flipX = false;
     }
 
-    void OnTriggerStay2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             if (collision.gameObject.TryGetComponent<IDamagable>(out playerDamagable))
                 DealDamage(damage, playerDamagable);
+
         }
     }
 
@@ -75,11 +86,30 @@ public class Enemy : MonoBehaviour, IDamagable, IAttacker //Dit is waar je de in
     public void Die() 
     {
         //Drop item
-        Destroy(gameObject);
+        int chance = Random.Range(1, 101);
+
+        if (chance <= dropRate)
+        {
+            Drop(dropObject);
+        }
+
+        health = maxHealth;
+        this.gameObject.SetActive(false);
     }
+
 
     public void DealDamage(float damage, IDamagable target)
     {
         target?.TakeDamage(damage);
+    }
+
+    public void DecideDrop()
+    {
+        //Unused in the enemy
+    }
+
+    public void Drop(GameObject drop)
+    {
+        GameObject droppedObject = Instantiate(drop, transform.position, Quaternion.identity);
     }
 }
