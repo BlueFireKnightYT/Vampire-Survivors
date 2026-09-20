@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Xml.XPath;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,7 +13,7 @@ public class Enemy : MonoBehaviour, IDamagable, IAttacker, IDroppable //Dit is w
     Rigidbody2D rb;
     IEnemyBehaviour enemyBehaviour;
     GameObject player;
-    PlayerXpSystem xpSystem;
+    PoolManager PoolManager;
 
     IDamagable playerDamagable;
 
@@ -40,7 +38,7 @@ public class Enemy : MonoBehaviour, IDamagable, IAttacker, IDroppable //Dit is w
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
-        xpSystem = player.GetComponent<PlayerXpSystem>();
+        PoolManager = player.GetComponent<PoolManager>();
 
 
         maxHealth = enemySO.health;
@@ -68,7 +66,7 @@ public class Enemy : MonoBehaviour, IDamagable, IAttacker, IDroppable //Dit is w
             sr.flipX = false;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -98,23 +96,21 @@ public class Enemy : MonoBehaviour, IDamagable, IAttacker, IDroppable //Dit is w
             
             Drop(xpOrb);
         }
-
-        health = maxHealth;
         this.gameObject.SetActive(false);
     }
 
     GameObject pooledXpOrb()
     {
-        GameObject foundEnemy = null;
-        foreach (GameObject xpOrb in xpSystem.xpOrbPool)
+        GameObject foundObject = null;
+        foreach (GameObject listObject in PoolManager.objectPool)
         {
-            if (!xpOrb.activeSelf)
+            if (!listObject.activeSelf)
             {
-                foundEnemy = xpOrb;
+                foundObject = listObject;
                 break;
             }
         }
-        return foundEnemy;
+        return foundObject;
     }
 
 
@@ -133,5 +129,10 @@ public class Enemy : MonoBehaviour, IDamagable, IAttacker, IDroppable //Dit is w
         drop.transform.position = transform.position;
         drop.SetActive(true);
         GameObject droppedObject = drop;
+    }
+
+    private void OnDisable()
+    {
+        health = maxHealth;
     }
 }

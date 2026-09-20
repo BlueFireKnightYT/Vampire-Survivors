@@ -218,6 +218,7 @@ GameObject:
   - component: {fileID: 300731189}
   - component: {fileID: 300731190}
   - component: {fileID: 300731192}
+  - component: {fileID: 300731193}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -336,7 +337,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 3
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
@@ -532,11 +533,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b0f5e1ea32fba149a9771df11b6923a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  lvlOneNeededXp: 5
+  lvlOneNeededXp: 10
   neededXpMultiplier: 1.5
   xp: 0
-  xpOrbPool: []
-  xpPrefab: {fileID: 3226453533174069870, guid: 31ad30cf0af0733468b39fd18136557c, type: 3}
 --- !u!114 &300731191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -561,6 +560,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fed61f3194e8b3b41a1b1bea042e49a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!114 &300731193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300731179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d67a39e994935a44b9541ce188f5b724, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  PoolName: XP Pickups
+  poolLimit: 100
+  poolObject: {fileID: 3226453533174069870, guid: 31ad30cf0af0733468b39fd18136557c, type: 3}
+  objectPool: []
 --- !u!1 &383410234
 GameObject:
   m_ObjectHideFlags: 0
@@ -1367,6 +1382,7 @@ GameObject:
   - component: {fileID: 1887094131}
   - component: {fileID: 1887094133}
   - component: {fileID: 1887094134}
+  - component: {fileID: 1887094135}
   m_Layer: 7
   m_Name: Spawner
   m_TagString: Untagged
@@ -1386,8 +1402,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dd1fe8167c73184e9f67e8776ed68f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  enemy: {fileID: 2041579427211575244, guid: a30db95543b92704ca4a97311b70e37f, type: 3}
-  poolLimit: 50
 --- !u!4 &1887094132
 Transform:
   m_ObjectHideFlags: 0
@@ -1451,6 +1465,22 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 30
+--- !u!114 &1887094135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887094130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d67a39e994935a44b9541ce188f5b724, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PoolManager
+  PoolName: Enemy pool
+  poolLimit: 100
+  poolObject: {fileID: 2041579427211575244, guid: a30db95543b92704ca4a97311b70e37f, type: 3}
+  objectPool: []
 --- !u!1 &1964049218
 GameObject:
   m_ObjectHideFlags: 0
@@ -1705,63 +1735,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2040504650}
   m_CullTransparentMesh: 1
---- !u!1001 &8549602341601441771
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2095894872476388910, guid: 31ad30cf0af0733468b39fd18136557c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 4.44
-      objectReference: {fileID: 0}
-    - target: {fileID: 2095894872476388910, guid: 31ad30cf0af0733468b39fd18136557c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2095894872476388910, guid: 31ad30cf0af0733468b39fd18136557c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2095894872476388910, guid: 31ad30cf0af0733468b39fd18136557c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2095894872476388910, guid: 31ad30cf0af0733468b39fd18136557c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2095894872476388910, guid: 31ad30cf0af0733468b39fd18136557c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2095894872476388910, guid: 31ad30cf0af0733468b39fd18136557c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2095894872476388910, guid: 31ad30cf0af0733468b39fd18136557c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2095894872476388910, guid: 31ad30cf0af0733468b39fd18136557c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2095894872476388910, guid: 31ad30cf0af0733468b39fd18136557c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3226453533174069870, guid: 31ad30cf0af0733468b39fd18136557c, type: 3}
-      propertyPath: m_Name
-      value: XP Pickup
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 31ad30cf0af0733468b39fd18136557c, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1772,4 +1745,3 @@ SceneRoots:
   - {fileID: 194763230}
   - {fileID: 1104010796}
   - {fileID: 1964049222}
-  - {fileID: 8549602341601441771}

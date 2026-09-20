@@ -3,15 +3,13 @@ using UnityEngine;
 
 public class SpawnEnemies : MonoBehaviour
 {
-    List<GameObject> enemyPool = new List<GameObject>();
-    public GameObject enemy;
-    public int poolLimit;
-
     float cooldown = 0.5f;
     float remainingTime;
+    PoolManager poolManager;
+
     private void Awake()
     {
-        SpawnPool();
+        poolManager = GetComponent<PoolManager>();
     }
 
     private void Update()
@@ -28,7 +26,7 @@ public class SpawnEnemies : MonoBehaviour
 
             Vector3 spawnPos = transform.position + (Vector3) (randomDirection * randomDistance);
 
-            GameObject chosenEnemy = pooledEnemy();
+            GameObject chosenEnemy = pooledObject();
 
             if(chosenEnemy != null)
             {
@@ -39,27 +37,17 @@ public class SpawnEnemies : MonoBehaviour
 
     }
 
-    GameObject pooledEnemy()
+    GameObject pooledObject()
     {
-        GameObject foundEnemy = null;
-        foreach (GameObject enemy in enemyPool)
+        GameObject foundObject = null;
+        foreach (GameObject listObject in poolManager.objectPool)
         {
-            if(!enemy.activeSelf)
+            if (!listObject.activeSelf)
             {
-                foundEnemy = enemy;
+                foundObject = listObject;
                 break;
             }
         }
-        return foundEnemy;
-    }
-
-    void SpawnPool()
-    {
-        while(enemyPool.Count < poolLimit)
-        {
-            GameObject spawnedEnemy = Instantiate(enemy);
-            enemyPool.Add(spawnedEnemy);
-            spawnedEnemy.SetActive(false);
-        }
+        return foundObject;
     }
 }

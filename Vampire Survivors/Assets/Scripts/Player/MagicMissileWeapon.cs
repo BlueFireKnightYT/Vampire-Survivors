@@ -45,23 +45,22 @@ public class MagicMissileWeapon : MonoBehaviour, IWeapon
     void Shoot()
     {
         targetPos = FindNearestEnemy();
+            Vector3 direction = targetPos.position - transform.position;
 
-        Vector3 direction = targetPos.position - transform.position;
+            Quaternion fullRotation = Quaternion.LookRotation(direction);
+            float zAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-        Quaternion fullRotation = Quaternion.LookRotation(direction);
-        float zAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, zAngle));
 
-        Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, zAngle));
+            GameObject bullet = Instantiate(bulletPrefab, transform.position, rotation);
+            Bullet bulletScript = bullet.GetComponent<Bullet>();
 
-        GameObject bullet = Instantiate(bulletPrefab, transform.position, rotation);
-        Bullet bulletScript = bullet.GetComponent<Bullet>();
-
-        bulletScript.damage = damage;
+            bulletScript.damage = damage;
     }
 
     Transform FindNearestEnemy()
     {
-        float shortestDistance = 999;
+        float shortestDistance = float.MaxValue;
 
         Transform nearestEnemy = null;
 
@@ -69,7 +68,8 @@ public class MagicMissileWeapon : MonoBehaviour, IWeapon
 
         foreach(Collider2D col in allColliders)
         {
-            float distance = Vector2.Distance(transform.position, col.transform.position);
+            Vector2 displacement = (Vector2)transform.position - (Vector2)col.transform.position;
+            float distance = displacement.sqrMagnitude;
 
             if (distance < shortestDistance)
             {

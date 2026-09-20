@@ -10,26 +10,13 @@ public class PlayerXpSystem : MonoBehaviour
     public float xp;
     float totalXp;
 
-    public List<GameObject> xpOrbPool = new List<GameObject>();
-    float poolLimit = 100;
-    public GameObject xpPrefab;
-
     private void Start()
     {
         nextLevelXp = lvlOneNeededXp;
         xp = 0;
-        SpawnPool();
     }
 
-    void SpawnPool()
-    {
-        while (xpOrbPool.Count < poolLimit)
-        {
-            GameObject spawnedOrb = Instantiate(xpPrefab);
-            xpOrbPool.Add(spawnedOrb);
-            spawnedOrb.SetActive(false);
-        }
-    }
+
 
     public void GetXp(float xpAmount)
     {
@@ -38,7 +25,6 @@ public class PlayerXpSystem : MonoBehaviour
 
         if (xp >= nextLevelXp)
         {
-            xp = 0;
             nextLevelXp *= neededXpMultiplier;
             LevelUp();
         }

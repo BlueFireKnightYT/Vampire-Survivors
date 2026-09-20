@@ -20,4 +20,4 @@ MonoBehaviour:
   xp: 1
   dropObject: {fileID: 1363146915110925851, guid: a60de464b285ed641963775ce4e05faa, type: 3}
   gold: 2
-  dropPercentage: 20
+  dropPercentage: 35
