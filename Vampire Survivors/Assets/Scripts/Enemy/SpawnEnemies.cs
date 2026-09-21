@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,11 +8,20 @@ public class SpawnEnemies : MonoBehaviour
     float remainingTime;
     PoolManager poolManager;
 
+    public List<WaveSO> waves = new List<WaveSO>();
+
     private void Awake()
     {
         poolManager = GetComponent<PoolManager>();
     }
 
+    private void Start()
+    {
+        foreach (WaveSO wave in waves)
+        {
+            StartCoroutine(SpawnWave(wave));
+        }
+    }
     private void Update()
     {
         remainingTime -= Time.deltaTime;
@@ -26,7 +36,7 @@ public class SpawnEnemies : MonoBehaviour
 
             Vector3 spawnPos = transform.position + (Vector3) (randomDirection * randomDistance);
 
-            GameObject chosenEnemy = pooledObject();
+            GameObject chosenEnemy = PooledObject();
 
             if(chosenEnemy != null)
             {
@@ -37,7 +47,7 @@ public class SpawnEnemies : MonoBehaviour
 
     }
 
-    GameObject pooledObject()
+    GameObject PooledObject()
     {
         GameObject foundObject = null;
         foreach (GameObject listObject in poolManager.objectPool)
@@ -49,5 +59,17 @@ public class SpawnEnemies : MonoBehaviour
             }
         }
         return foundObject;
+    }
+
+    IEnumerator SpawnWave(WaveSO wave)
+    {
+        foreach(WaveEnemyData enemies in wave.enemies)
+        {
+            for (int i = 0; i < enemies.amount; i++)
+            {
+                Debug.Log(i);
+                yield return new WaitForSeconds(wave.spawnDelay);
+            }
+        }
     }
 }
