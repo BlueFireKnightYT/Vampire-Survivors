@@ -513,8 +513,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c21a3bb901b5e43b720d1ce1465e60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  shootCooldown: 3
-  damage: 5
+  shootCooldown: 2
+  damage: 6
   bulletPrefab: {fileID: 1363146915110925851, guid: a60de464b285ed641963775ce4e05faa, type: 3}
   baseBulletAmount: 1
   multiShotCooldown: 0.1
@@ -1381,8 +1381,8 @@ GameObject:
   - component: {fileID: 1887094132}
   - component: {fileID: 1887094131}
   - component: {fileID: 1887094133}
-  - component: {fileID: 1887094134}
   - component: {fileID: 1887094135}
+  - component: {fileID: 1887094136}
   m_Layer: 7
   m_Name: Spawner
   m_TagString: Untagged
@@ -1402,6 +1402,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dd1fe8167c73184e9f67e8776ed68f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  waves:
+  - {fileID: 11400000, guid: 35d8796fb6b9d9f4cbd86707dcf265e4, type: 2}
+  - {fileID: 11400000, guid: cbf9fe29150d8ee408e029430c0d7f21, type: 2}
 --- !u!4 &1887094132
 Transform:
   m_ObjectHideFlags: 0
@@ -1429,14 +1432,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f56057fa39273f4083a321fd2bee725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
---- !u!58 &1887094134
-CircleCollider2D:
+--- !u!114 &1887094135
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1887094130}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d67a39e994935a44b9541ce188f5b724, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PoolManager
+  PoolName: Enemy pool
+  poolLimit: 50
+  poolObject: {fileID: 2041579427211575244, guid: a30db95543b92704ca4a97311b70e37f, type: 3}
+  objectPool: []
+--- !u!58 &1887094136
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887094130}
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -1465,22 +1484,6 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 30
---- !u!114 &1887094135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1887094130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d67a39e994935a44b9541ce188f5b724, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PoolManager
-  PoolName: Enemy pool
-  poolLimit: 100
-  poolObject: {fileID: 2041579427211575244, guid: a30db95543b92704ca4a97311b70e37f, type: 3}
-  objectPool: []
 --- !u!1 &1964049218
 GameObject:
   m_ObjectHideFlags: 0

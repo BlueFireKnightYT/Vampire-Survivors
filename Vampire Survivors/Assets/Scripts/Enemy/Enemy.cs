@@ -39,13 +39,16 @@ public class Enemy : MonoBehaviour, IDamagable, IAttacker, IDroppable //Dit is w
         animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
         PoolManager = player.GetComponent<PoolManager>();
+    }
 
-
+    public void retrieveSO()
+    {
+        print("retrieve");
+        dropRate = enemySO.dropRate;
         maxHealth = enemySO.health;
         health = maxHealth;
         damage = enemySO.damage;
         animator.runtimeAnimatorController = enemySO.animator;
-        dropRate = enemySO.dropPercentage;
     }
 
     void Update()

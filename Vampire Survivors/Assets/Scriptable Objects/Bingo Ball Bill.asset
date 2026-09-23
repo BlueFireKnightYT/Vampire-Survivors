@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7209aa384eadc0342b613622a6b9ab0c, type: 3}
-  m_Name: Walker
+  m_Name: Bingo Ball Bill
   m_EditorClassIdentifier: Assembly-CSharp::EnemySO
-  objectName: Walker
-  animator: {fileID: 9100000, guid: 7ad348ee58066f843be0636d4520fe34, type: 2}
-  health: 4
-  damage: 4
-  speed: 3
-  dropRate: 20
+  objectName: Bingo Ball Bill
+  animator: {fileID: 9100000, guid: 0f27a17c01fc1aa48bdc2f366751e4f7, type: 2}
+  health: 7
+  damage: 5
+  speed: 2
+  dropRate: 30

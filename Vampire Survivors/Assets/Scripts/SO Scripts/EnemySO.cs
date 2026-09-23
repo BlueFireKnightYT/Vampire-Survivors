@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 [CreateAssetMenu(fileName = "EnemySO", menuName = "Scriptable Objects/EnemySO", order = 1)]
 public class EnemySO : ScriptableObject
@@ -11,8 +12,5 @@ public class EnemySO : ScriptableObject
     public float damage;
     public float speed;
 
-    public int xp;
-    public GameObject dropObject;
-    public int gold;
-    public float dropPercentage;
+    public float dropRate;
 }

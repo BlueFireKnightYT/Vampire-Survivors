@@ -6,7 +6,7 @@ public class MagicMissileWeapon : MonoBehaviour, IWeapon
     [SerializeField] float shootCooldown;
     [SerializeField] float damage;
     float remainingCooldown;
-    float searchRadius = 15;
+    float searchRadius = 30;
 
     int level = 1;
 

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SpawnEnemies : MonoBehaviour
 {
-    float cooldown = 0.5f;
-    float remainingTime;
     PoolManager poolManager;
 
     public List<WaveSO> waves = new List<WaveSO>();
@@ -13,38 +11,7 @@ public class SpawnEnemies : MonoBehaviour
     private void Awake()
     {
         poolManager = GetComponent<PoolManager>();
-    }
-
-    private void Start()
-    {
-        foreach (WaveSO wave in waves)
-        {
-            StartCoroutine(SpawnWave(wave));
-        }
-    }
-    private void Update()
-    {
-        remainingTime -= Time.deltaTime;
-
-        //enable 3 enemies per second if there are any disabled enemies left in pool
-        if(remainingTime <= 0)
-        {
-            remainingTime = cooldown;
-
-            Vector2 randomDirection = Random.insideUnitCircle.normalized;
-            float randomDistance = Random.Range(15, 30);
-
-            Vector3 spawnPos = transform.position + (Vector3) (randomDirection * randomDistance);
-
-            GameObject chosenEnemy = PooledObject();
-
-            if(chosenEnemy != null)
-            {
-                chosenEnemy.transform.position = spawnPos;
-                chosenEnemy.SetActive(true);
-            }
-        }
-
+        StartCoroutine(SpawnWave());
     }
 
     GameObject PooledObject()
@@ -61,15 +28,40 @@ public class SpawnEnemies : MonoBehaviour
         return foundObject;
     }
 
-    IEnumerator SpawnWave(WaveSO wave)
+    IEnumerator SpawnWave()
     {
-        foreach(WaveEnemyData enemies in wave.enemies)
-        {
-            for (int i = 0; i < enemies.amount; i++)
+        foreach(WaveSO wave in waves)
+        { 
+            foreach(WaveEnemyData enemies in wave.enemies)
             {
-                Debug.Log(i);
-                yield return new WaitForSeconds(wave.spawnDelay);
+                for (int i = 0; i < enemies.amount;)
+                {
+                    Vector2 randomDirection = Random.insideUnitCircle.normalized;
+                    float randomDistance = Random.Range(15, 30);
+
+                    Vector3 spawnPos = transform.position + (Vector3)(randomDirection * randomDistance);
+
+                    GameObject chosenEnemy = PooledObject();
+
+                    if (chosenEnemy != null)
+                    {
+                        i++;
+                        Debug.Log("hi");
+
+                        chosenEnemy.transform.position = spawnPos;
+                        chosenEnemy.SetActive(true);
+
+                        Enemy enemyScript = chosenEnemy.GetComponent<Enemy>();
+
+                        enemyScript.enemySO = enemies.enemySO;
+
+                        enemyScript.retrieveSO();
+                    }
+                    yield return new WaitForSeconds(wave.spawnDelay);
+                }
             }
+            yield return new WaitForSeconds(wave.waveDelay);
         }
+
     }
 }

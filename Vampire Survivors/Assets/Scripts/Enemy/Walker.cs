@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Walker : MonoBehaviour, IEnemyBehaviour
 {
-    EnemySO enemySO;
     GameObject player;
 
     void Awake()
@@ -12,7 +11,7 @@ public class Walker : MonoBehaviour, IEnemyBehaviour
 
     public void Initialize(EnemySO enemySO)
     {
-        this.enemySO = enemySO;
+        //not used
     }
 
     public void Move(float moveSpeed, Rigidbody2D rigidbody2D)

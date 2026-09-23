@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c08044910098e994a89fa8fbd6928783, type: 3}
-  m_Name: Wave1
+  m_Name: Wave2
   m_EditorClassIdentifier: Assembly-CSharp::WaveSO
   waveDelay: 3
-  spawnDelay: 0.3
+  spawnDelay: 0.2
   enemies:
   - amount: 20
     enemySO: {fileID: 11400000, guid: defa10bafc55115429e8c9144847f724, type: 2}
+  - amount: 5
+    enemySO: {fileID: 11400000, guid: fac59cdd9b5d9aa47b1fab09321d0a5a, type: 2}
