@@ -32,7 +32,7 @@ public class PoolManager : MonoBehaviour
     //GameObject pooledObject()
     //{
     //    GameObject foundObject = null;
-    //    foreach (GameObject listObject in PoolManager.objectPool)
+    //    foreach (GameObject listObject in poolManager.objectPool)
     //    {
     //        if (!listObject.activeSelf)
     //        {

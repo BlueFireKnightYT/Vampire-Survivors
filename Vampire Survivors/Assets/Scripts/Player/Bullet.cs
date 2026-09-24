@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour, IAttacker
@@ -11,7 +10,7 @@ public class Bullet : MonoBehaviour, IAttacker
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        Destroy(this.gameObject, 5);
+        
     }
     private void Update()
     {
@@ -26,7 +25,7 @@ public class Bullet : MonoBehaviour, IAttacker
             DealDamage(damage, target);
         }
 
-        Destroy(this.gameObject);
+        gameObject.SetActive(false);
     }
 
     public void DealDamage(float damage, IDamagable target)

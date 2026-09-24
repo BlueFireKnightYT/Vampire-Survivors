@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour, IDamagable, IAttacker, IDroppable //Dit is w
     Animator animator;
     Rigidbody2D rb;
     IEnemyBehaviour enemyBehaviour;
-    GameObject player;
+    GameObject xpPooler;
     PoolManager PoolManager;
 
     IDamagable playerDamagable;
@@ -37,8 +37,8 @@ public class Enemy : MonoBehaviour, IDamagable, IAttacker, IDroppable //Dit is w
         sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        player = GameObject.FindGameObjectWithTag("Player");
-        PoolManager = player.GetComponent<PoolManager>();
+        xpPooler = GameObject.FindGameObjectWithTag("XpPooler");
+        PoolManager = xpPooler.GetComponent<PoolManager>();
     }
 
     public void retrieveSO()

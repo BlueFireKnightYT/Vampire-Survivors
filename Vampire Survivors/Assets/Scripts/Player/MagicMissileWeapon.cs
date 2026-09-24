@@ -15,11 +15,14 @@ public class MagicMissileWeapon : MonoBehaviour, IWeapon
     public int baseBulletAmount;
     public float multiShotCooldown;
 
+    PoolManager poolManager;
+
     [SerializeField] LayerMask enemyLayer;
 
     private void Awake()
     {
         remainingCooldown = shootCooldown;
+        poolManager = GetComponent<PoolManager>();
     }
 
     public void AutoShoot()
@@ -44,17 +47,22 @@ public class MagicMissileWeapon : MonoBehaviour, IWeapon
     void Shoot()
     {
         targetPos = FindNearestEnemy();
-            Vector3 direction = targetPos.position - transform.position;
+        Vector3 direction = targetPos.position - transform.position;
 
-            Quaternion fullRotation = Quaternion.LookRotation(direction);
-            float zAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion fullRotation = Quaternion.LookRotation(direction);
+        float zAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-            Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, zAngle));
+        Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, zAngle));
 
-            GameObject bullet = Instantiate(bulletPrefab, transform.position, rotation);
-            Bullet bulletScript = bullet.GetComponent<Bullet>();
+        GameObject bullet = pooledObject();
+        Bullet bulletScript = bullet.GetComponent<Bullet>();
 
-            bulletScript.damage = damage;
+        bullet.transform.position = transform.position;
+        bullet.transform.rotation = rotation;
+
+        bullet.SetActive(true);
+
+        bulletScript.damage = damage;
     }
 
     Transform FindNearestEnemy()
@@ -97,5 +105,19 @@ public class MagicMissileWeapon : MonoBehaviour, IWeapon
             int result = level % 2;
             if (result == 0) baseBulletAmount++;
         }
+    }
+
+    GameObject pooledObject()
+    {
+        GameObject foundObject = null;
+        foreach (GameObject listObject in poolManager.objectPool)
+        {
+            if (!listObject.activeSelf)
+            {
+                foundObject = listObject;
+                break;
+            }
+        }
+        return foundObject;
     }
 }
