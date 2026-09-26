@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class MagicMissileWeapon : MonoBehaviour, IWeapon
+public class MagicMissileWeapon : MonoBehaviour, IWeapon, IUpgradable
 {
     [SerializeField] float shootCooldown;
     [SerializeField] float damage;
@@ -89,7 +89,7 @@ public class MagicMissileWeapon : MonoBehaviour, IWeapon
         return nearestEnemy;
     }
 
-    void LevelUp()
+    public void Upgrade()
     {
         // + 1 level
         // +20% damage

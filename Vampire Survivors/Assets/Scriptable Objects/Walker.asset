@@ -17,4 +17,4 @@ MonoBehaviour:
   health: 4
   damage: 4
   speed: 3
-  dropRate: 20
+  dropRate: 100

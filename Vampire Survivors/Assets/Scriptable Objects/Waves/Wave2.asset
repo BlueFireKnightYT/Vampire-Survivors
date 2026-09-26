@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wave2
   m_EditorClassIdentifier: Assembly-CSharp::WaveSO
   waveDelay: 3
-  spawnDelay: 0.2
+  spawnDelay: 0.4
   enemies:
   - amount: 20
     enemySO: {fileID: 11400000, guid: defa10bafc55115429e8c9144847f724, type: 2}

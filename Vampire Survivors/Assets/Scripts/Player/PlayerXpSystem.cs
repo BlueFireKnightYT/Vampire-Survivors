@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerXpSystem : MonoBehaviour
 {
@@ -10,8 +10,12 @@ public class PlayerXpSystem : MonoBehaviour
     public float xp;
     float totalXp;
 
+    Slider xpBar;
+    public GameObject upgradeMenu;
+
     private void Start()
     {
+        xpBar = GameObject.FindGameObjectWithTag("XpBar").GetComponent<Slider>();
         nextLevelXp = lvlOneNeededXp;
         xp = 0;
     }
@@ -25,13 +29,22 @@ public class PlayerXpSystem : MonoBehaviour
 
         if (xp >= nextLevelXp)
         {
-            nextLevelXp *= neededXpMultiplier;
             LevelUp();
         }
+
+        float xpPercent = (xp / nextLevelXp) * 100;
+        xpBar.value = xpPercent;
     }
 
     void LevelUp()
     {
-        Debug.Log("Level Up. New goal is " + nextLevelXp + " Xp" );
+        float extraXp = xp - nextLevelXp;
+        xp = 0 + extraXp;
+
+        nextLevelXp *= neededXpMultiplier;
+
+        upgradeMenu.SetActive(true);
+        UpgradeManager.instance.RetrieveUpgradeData();
+        Time.timeScale = 0f;
     }
 }

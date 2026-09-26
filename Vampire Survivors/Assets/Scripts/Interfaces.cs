@@ -28,6 +28,11 @@ public interface IWeapon
     void AutoShoot();
 }
 
+public interface IUpgradable
+{
+    void Upgrade();
+}
+
 public interface IPickupable
 {
     void pickupObject();
