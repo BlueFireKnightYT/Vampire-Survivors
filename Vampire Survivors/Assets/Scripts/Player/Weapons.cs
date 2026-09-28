@@ -14,7 +14,7 @@ public class Weapons : MonoBehaviour
     {
         foreach(IWeapon weapon in weaponList)
         {
-            weapon.AutoShoot();
+            weapon.Fire();
         }
     }
 

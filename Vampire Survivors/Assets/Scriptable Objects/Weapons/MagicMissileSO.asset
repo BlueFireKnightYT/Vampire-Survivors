@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b87ca3fcc2b34b4ab6d53b5659db840, type: 3}
+  m_Name: MagicMissileSO
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponSO
+  weaponName: Magic Missile
+  maxLevel: 6
+  damage: 6
+  interval: 2
+  projectile: {fileID: 1363146915110925851, guid: a60de464b285ed641963775ce4e05faa, type: 3}

@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class MagicMissileWeapon : MonoBehaviour, IWeapon, IUpgradable
 {
-    [SerializeField] float shootCooldown;
-    [SerializeField] float damage;
-    float remainingCooldown;
     float searchRadius = 30;
 
-    int level = 1;
+    WeaponSO weaponData;
+    Weapon weapon;
+
+    private float damage;
 
     Transform targetPos;
     [SerializeField] GameObject bulletPrefab;
@@ -19,21 +19,22 @@ public class MagicMissileWeapon : MonoBehaviour, IWeapon, IUpgradable
 
     [SerializeField] LayerMask enemyLayer;
 
-    private void Awake()
+    private void Start()
     {
-        remainingCooldown = shootCooldown;
         poolManager = GetComponent<PoolManager>();
+        damage = weaponData.damage;
     }
 
-    public void AutoShoot()
+    public void Fire()
     {
-        remainingCooldown -= Time.deltaTime;
-        if(remainingCooldown <= 0)
-        { 
-            StartCoroutine(MultiShoot());
-            remainingCooldown = shootCooldown;
-        }
+        StartCoroutine(MultiShoot());
     }
+    public void Initialize(WeaponSO weaponData, Weapon owner)
+    {
+        this.weaponData = weaponData;
+        weapon = owner;
+    }
+
     public IEnumerator MultiShoot()
     {
         int bulletAmount = baseBulletAmount;
@@ -96,13 +97,14 @@ public class MagicMissileWeapon : MonoBehaviour, IWeapon, IUpgradable
         // + 1 bullet every 2 levels
         // - 5% cooldown
         // max level = level 6
-        if (level < 6)
-        {
-            level++;
-            damage *= 1.2f;
-            shootCooldown *= 0.95f;
 
-            int result = level % 2;
+        if (weapon.level < weaponData.maxLevel)
+        {
+            weapon.level++;
+            damage *= 1.2f;
+            weapon.cooldown *= 0.95f;
+
+            int result = weapon.level % 2;
             if (result == 0) baseBulletAmount++;
         }
     }

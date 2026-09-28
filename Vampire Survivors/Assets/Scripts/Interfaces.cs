@@ -25,7 +25,8 @@ public interface IDroppable
 
 public interface IWeapon
 {
-    void AutoShoot();
+    void Fire();
+    void Initialize(WeaponSO weaponData, Weapon owner);
 }
 
 public interface IUpgradable
