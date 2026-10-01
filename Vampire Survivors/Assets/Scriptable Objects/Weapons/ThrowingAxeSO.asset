@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ThrowingAxeSO
   m_EditorClassIdentifier: Assembly-CSharp::WeaponSO
   weaponName: Throwing Axe
+  maxLevel: 6
   damage: 10
   interval: 3
   projectile: {fileID: 0}

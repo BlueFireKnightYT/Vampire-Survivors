@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UpgradeManager : MonoBehaviour
@@ -8,9 +8,8 @@ public class UpgradeManager : MonoBehaviour
     public static UpgradeManager instance { get; private set; }
     public List<Button> buttons = new List<Button>();
     public List<UpgradeSO> upgradeOptions = new List<UpgradeSO>();
-
     public List<UpgradeSO> chosenUpgrades = new List<UpgradeSO>();
-    UpgradeSO chosenUpgrade;
+    public GameObject upgradeMenu;
 
     private void Awake()
     {
@@ -19,11 +18,14 @@ public class UpgradeManager : MonoBehaviour
         else
             Destroy(gameObject);
     }
+
     public void RetrieveUpgradeData()
     {
         foreach (Button button in buttons)
         {
-            UpgradeCardUI cardComponents = button.GetComponent<UpgradeCardUI>();
+            UpgradeCardUI dynamicCard = button.GetComponent<UpgradeCardUI>();
+            UpgradeSO chosenUpgrade;
+
             do
             {
                 chosenUpgrade = upgradeOptions[Random.Range(0, upgradeOptions.Count)];
@@ -32,11 +34,24 @@ public class UpgradeManager : MonoBehaviour
 
             chosenUpgrades.Add(chosenUpgrade);
 
-            cardComponents.title.text = chosenUpgrade.upgradeName;
-            cardComponents.image.sprite = chosenUpgrade.showcaseImage;
-
-            chosenUpgrade = null;
+            dynamicCard.title.text = chosenUpgrade.upgradeName;
+            dynamicCard.image.sprite = chosenUpgrade.showcaseImage;
+            dynamicCard.weaponID = chosenUpgrade.weaponID;
         }
+    }
+
+    public void UpgradeButtonClick()
+    {
+        GameObject clickedButton = EventSystem.current.currentSelectedGameObject;
+        UpgradeCardUI clickedCard = clickedButton.GetComponent<UpgradeCardUI>();
+
+        clickedCard.weapon = GameObject.FindGameObjectWithTag(clickedCard.weaponID);
+        IUpgradable upgradeInterface = clickedCard.weapon.GetComponent<IUpgradable>();
+
+        upgradeInterface.Upgrade();
+
+        upgradeMenu.SetActive(false);
+        Time.timeScale = 1;
         chosenUpgrades.Clear();
     }
 }

@@ -8,6 +8,8 @@ TagManager:
   - Drop
   - XpPooler
   - XpBar
+  - MagicMissileWeapon
+  - ThrowingAxe
   layers:
   - Default
   - TransparentFX

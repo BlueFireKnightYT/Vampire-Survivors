@@ -241,7 +241,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 74104667}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1725879543}
+        m_TargetAssemblyTypeName: UpgradeManager, Assembly-CSharp
+        m_MethodName: UpgradeButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &74104670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,6 +269,8 @@ MonoBehaviour:
   title: {fileID: 335786061}
   description: {fileID: 0}
   image: {fileID: 1541088975}
+  weaponID: 
+  weapon: {fileID: 0}
 --- !u!1 &194763227
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,7 +364,7 @@ GameObject:
   - component: {fileID: 293108342}
   m_Layer: 7
   m_Name: Throwing Axe
-  m_TagString: Untagged
+  m_TagString: ThrowingAxe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -396,7 +410,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
   weaponData: {fileID: 11400000, guid: 5a70c58ddc6ab3d468634e172842312e, type: 2}
   cooldown: 0
-  level: 1
+  level: 0
 --- !u!212 &293108344
 SpriteRenderer:
   serializedVersion: 2
@@ -1795,7 +1809,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 826217905}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1725879543}
+        m_TargetAssemblyTypeName: UpgradeManager, Assembly-CSharp
+        m_MethodName: UpgradeButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &826217905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1870,6 +1896,8 @@ MonoBehaviour:
   title: {fileID: 1750487368}
   description: {fileID: 0}
   image: {fileID: 1348581021}
+  weaponID: 
+  weapon: {fileID: 0}
 --- !u!1 &851606156
 GameObject:
   m_ObjectHideFlags: 0
@@ -2158,7 +2186,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1180080749}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1725879543}
+        m_TargetAssemblyTypeName: UpgradeManager, Assembly-CSharp
+        m_MethodName: UpgradeButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1180080752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2174,6 +2214,8 @@ MonoBehaviour:
   title: {fileID: 1331620389}
   description: {fileID: 0}
   image: {fileID: 1303466008}
+  weaponID: 
+  weapon: {fileID: 0}
 --- !u!1 &1278491741
 GameObject:
   m_ObjectHideFlags: 0
@@ -2188,7 +2230,7 @@ GameObject:
   - component: {fileID: 1278491745}
   m_Layer: 7
   m_Name: Magic Missile
-  m_TagString: Untagged
+  m_TagString: MagicMissileWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2780,6 +2822,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 56e2c55475b230b4fa2aff44259af10c, type: 2}
   - {fileID: 11400000, guid: 58011fc1523a5514aa09662e8f19bf5d, type: 2}
   chosenUpgrades: []
+  upgradeMenu: {fileID: 387413391}
 --- !u!4 &1725879544
 Transform:
   m_ObjectHideFlags: 0

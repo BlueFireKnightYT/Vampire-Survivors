@@ -7,7 +7,7 @@ public class Weapon : MonoBehaviour
     private IWeapon weaponBehaviour;
     public float cooldown;
 
-    public int level = 1;
+    public int level;
 
     private void Awake()
     {
@@ -27,7 +27,7 @@ public class Weapon : MonoBehaviour
     {
         cooldown -= Time.deltaTime;
 
-        if (cooldown <= 0)
+        if (cooldown <= 0 && level > 0)
         {
             weaponBehaviour.Fire();
             cooldown = weaponData.interval;

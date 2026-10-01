@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: B
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeSO
   showcaseImage: {fileID: 7275576854423484050, guid: c3770850fb395d34aa7c2510cf23b306, type: 3}
-  upgradeName: B
+  upgradeName: Throwing Axe
   descriptiom: 
-  weaponID: 
+  weaponID: ThrowingAxe

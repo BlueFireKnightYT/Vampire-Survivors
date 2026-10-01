@@ -7,4 +7,6 @@ public class UpgradeCardUI : MonoBehaviour
     public TextMeshProUGUI title;
     public  TextMeshProUGUI description;
     public  Image image;
+    public string weaponID;
+    public GameObject weapon;
 }
