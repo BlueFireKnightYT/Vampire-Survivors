@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b87ca3fcc2b34b4ab6d53b5659db840, type: 3}
-  m_Name: MagicMissileSO
+  m_Name: RotatingWeapon
   m_EditorClassIdentifier: Assembly-CSharp::WeaponSO
-  weaponName: Magic Missile
+  weaponName: Rotating Weapon
   maxLevel: 6
-  damage: 4
-  interval: 2
-  projectile: {fileID: 1363146915110925851, guid: a60de464b285ed641963775ce4e05faa, type: 3}
+  damage: 3
+  interval: 6
+  projectile: {fileID: 7042975378979473351, guid: 50df0c485e830d3498d74b38daab9d5c, type: 3}

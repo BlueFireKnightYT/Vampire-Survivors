@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemySO
   objectName: Bingo Ball Bill
   animator: {fileID: 9100000, guid: 0f27a17c01fc1aa48bdc2f366751e4f7, type: 2}
-  health: 7
+  health: 6
   damage: 5
   speed: 2
   dropRate: 30

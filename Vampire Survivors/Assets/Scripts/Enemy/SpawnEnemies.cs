@@ -4,14 +4,22 @@ using UnityEngine;
 
 public class SpawnEnemies : MonoBehaviour
 {
+    public static SpawnEnemies instance { get; private set; }
     PoolManager poolManager;
 
     public List<WaveSO> waves = new List<WaveSO>();
+
+    public int waveCount = 0;
 
     private void Awake()
     {
         poolManager = GetComponent<PoolManager>();
         StartCoroutine(SpawnWave());
+
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
     }
 
     GameObject PooledObject()
@@ -31,7 +39,8 @@ public class SpawnEnemies : MonoBehaviour
     IEnumerator SpawnWave()
     {
         foreach(WaveSO wave in waves)
-        { 
+        {
+            waveCount++;
             foreach(WaveEnemyData enemies in wave.enemies)
             {
                 for (int i = 0; i < enemies.amount;)
@@ -46,7 +55,6 @@ public class SpawnEnemies : MonoBehaviour
                     if (chosenEnemy != null)
                     {
                         i++;
-                        Debug.Log("hi");
 
                         chosenEnemy.transform.position = spawnPos;
                         chosenEnemy.SetActive(true);

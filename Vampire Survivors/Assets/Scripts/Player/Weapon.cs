@@ -19,7 +19,6 @@ public class Weapon : MonoBehaviour
         {
             Debug.LogWarning("No Behaviour found on " + gameObject.name);
         }
-        Debug.Log(weaponData);
         cooldown = weaponData.interval;
     }
 

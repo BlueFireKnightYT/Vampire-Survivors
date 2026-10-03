@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemySO
   objectName: Walker
   animator: {fileID: 9100000, guid: 7ad348ee58066f843be0636d4520fe34, type: 2}
-  health: 4
+  health: 3
   damage: 4
   speed: 3
-  dropRate: 100
+  dropRate: 20

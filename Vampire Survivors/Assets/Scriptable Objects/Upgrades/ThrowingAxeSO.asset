@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c802309b4bfa99d40965f5c6381cce1c, type: 3}
-  m_Name: A
+  m_Name: ThrowingAxeSO
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeSO
-  showcaseImage: {fileID: -6438331177021221799, guid: e741cbdada4841c4c97c24a68ccc0294, type: 3}
-  upgradeName: A
+  showcaseImage: {fileID: 7275576854423484050, guid: c3770850fb395d34aa7c2510cf23b306, type: 3}
+  upgradeName: Throwing Axe
   descriptiom: 
-  weaponID: 
+  weaponID: ThrowingAxe

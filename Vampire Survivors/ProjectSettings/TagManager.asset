@@ -10,6 +10,7 @@ TagManager:
   - XpBar
   - MagicMissileWeapon
   - ThrowingAxe
+  - RotatingWeapon
   layers:
   - Default
   - TransparentFX

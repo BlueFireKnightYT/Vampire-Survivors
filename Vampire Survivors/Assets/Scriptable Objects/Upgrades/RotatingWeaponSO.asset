@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c802309b4bfa99d40965f5c6381cce1c, type: 3}
-  m_Name: MagicMissile
+  m_Name: RotatingWeaponSO
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeSO
-  showcaseImage: {fileID: 9139452411967119609, guid: 3ede2d7a629648845b53389581b3d69d, type: 3}
-  upgradeName: Magic Missile
+  showcaseImage: {fileID: 0}
+  upgradeName: Rotating Weapon
   descriptiom: 
-  weaponID: MagicMissileWeapon
+  weaponID: RotatingWeapon

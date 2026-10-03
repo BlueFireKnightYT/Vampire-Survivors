@@ -85,7 +85,6 @@ public class MagicMissileWeapon : MonoBehaviour, IWeapon, IUpgradable
                 nearestEnemy = col.transform;
             }
         }
-        Debug.Log(nearestEnemy.name);
         
         return nearestEnemy;
     }

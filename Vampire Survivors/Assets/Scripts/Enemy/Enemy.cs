@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,10 +19,13 @@ public class Enemy : MonoBehaviour, IDamagable, IAttacker, IDroppable //Dit is w
     IDamagable playerDamagable;
 
     float maxHealth;
+    float baseHealth;
     float health;
     float damage;
 
     float dropRate;
+
+    bool canTakeDamage = true;
 
     void Awake()
     {
@@ -43,20 +47,13 @@ public class Enemy : MonoBehaviour, IDamagable, IAttacker, IDroppable //Dit is w
 
     public void retrieveSO()
     {
-        print("retrieve");
         dropRate = enemySO.dropRate;
-        maxHealth = enemySO.health;
+        baseHealth = enemySO.health;
+        maxHealth = baseHealth * (SpawnEnemies.instance.waveCount / 10f + 1);
         health = maxHealth;
+
         damage = enemySO.damage;
         animator.runtimeAnimatorController = enemySO.animator;
-    }
-
-    void Update()
-    {
-        if(Keyboard.current.spaceKey.wasPressedThisFrame)
-        {
-            TakeDamage(1);
-        }
     }
 
     void FixedUpdate()
@@ -81,13 +78,27 @@ public class Enemy : MonoBehaviour, IDamagable, IAttacker, IDroppable //Dit is w
 
     public void TakeDamage(float damage) //Deze 2 zijn gereferenced uit IDamagable
     {
-        health -= damage;
-        if (health <= 0)
+        if (canTakeDamage)
         {
-            Die();
+            health -= damage;
+            if (health <= 0)
+            {
+                Die();
+            }
+            else
+            {
+                canTakeDamage = false;
+                StartCoroutine(ToggleCanTakeDamage());
+            }
+
         }
     }
 
+    IEnumerator ToggleCanTakeDamage()
+    {
+        yield return new WaitForSeconds(0.5f);
+        canTakeDamage = true;
+    }
     public void Die() 
     {
         //Drop item
@@ -132,10 +143,5 @@ public class Enemy : MonoBehaviour, IDamagable, IAttacker, IDroppable //Dit is w
         drop.transform.position = transform.position;
         drop.SetActive(true);
         GameObject droppedObject = drop;
-    }
-
-    private void OnDisable()
-    {
-        health = maxHealth;
     }
 }
