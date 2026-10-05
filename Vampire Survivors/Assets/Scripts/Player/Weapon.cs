@@ -5,7 +5,7 @@ public class Weapon : MonoBehaviour
     public WeaponSO weaponData;
 
     private IWeapon weaponBehaviour;
-    public float cooldown;
+    [HideInInspector] public float cooldown;
 
     public int level;
 

@@ -361,6 +361,7 @@ GameObject:
   - component: {fileID: 293108341}
   - component: {fileID: 293108343}
   - component: {fileID: 293108342}
+  - component: {fileID: 293108344}
   m_Layer: 7
   m_Name: Throwing Axe
   m_TagString: ThrowingAxe
@@ -410,6 +411,22 @@ MonoBehaviour:
   weaponData: {fileID: 11400000, guid: 5a70c58ddc6ab3d468634e172842312e, type: 2}
   cooldown: 0
   level: 0
+--- !u!114 &293108344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293108340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d67a39e994935a44b9541ce188f5b724, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PoolManager
+  PoolName: Throwing Weapons
+  poolLimit: 10
+  poolObject: {fileID: 3682186651412934377, guid: b64ee0903e5dd38429ffda7407720e66, type: 3}
+  objectPool: []
 --- !u!1 &299304257
 GameObject:
   m_ObjectHideFlags: 0
@@ -2645,9 +2662,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 293108341}
   - {fileID: 1278491742}
   - {fileID: 2113521820}
+  - {fileID: 293108341}
   m_Father: {fileID: 300731185}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1541088973

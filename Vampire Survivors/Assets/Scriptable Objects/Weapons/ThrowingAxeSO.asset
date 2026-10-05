@@ -16,4 +16,4 @@ MonoBehaviour:
   maxLevel: 6
   damage: 10
   interval: 3
-  projectile: {fileID: 0}
+  projectile: {fileID: 3682186651412934377, guid: b64ee0903e5dd38429ffda7407720e66, type: 3}

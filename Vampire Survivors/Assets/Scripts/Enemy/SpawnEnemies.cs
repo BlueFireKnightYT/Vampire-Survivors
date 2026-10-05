@@ -38,37 +38,40 @@ public class SpawnEnemies : MonoBehaviour
 
     IEnumerator SpawnWave()
     {
-        foreach(WaveSO wave in waves)
+        while (true)
         {
             waveCount++;
-            foreach(WaveEnemyData enemies in wave.enemies)
+            foreach (WaveSO wave in waves)
             {
-                for (int i = 0; i < enemies.amount;)
+                foreach (WaveEnemyData enemies in wave.enemies)
                 {
-                    Vector2 randomDirection = Random.insideUnitCircle.normalized;
-                    float randomDistance = Random.Range(15, 30);
-
-                    Vector3 spawnPos = transform.position + (Vector3)(randomDirection * randomDistance);
-
-                    GameObject chosenEnemy = PooledObject();
-
-                    if (chosenEnemy != null)
+                    for (int i = 0; i < enemies.amount;)
                     {
-                        i++;
+                        Vector2 randomDirection = Random.insideUnitCircle.normalized;
+                        float randomDistance = Random.Range(15, 30);
 
-                        chosenEnemy.transform.position = spawnPos;
-                        chosenEnemy.SetActive(true);
+                        Vector3 spawnPos = transform.position + (Vector3)(randomDirection * randomDistance);
 
-                        Enemy enemyScript = chosenEnemy.GetComponent<Enemy>();
+                        GameObject chosenEnemy = PooledObject();
 
-                        enemyScript.enemySO = enemies.enemySO;
+                        if (chosenEnemy != null)
+                        {
+                            i++;
 
-                        enemyScript.retrieveSO();
+                            chosenEnemy.transform.position = spawnPos;
+                            chosenEnemy.SetActive(true);
+
+                            Enemy enemyScript = chosenEnemy.GetComponent<Enemy>();
+
+                            enemyScript.enemySO = enemies.enemySO;
+
+                            enemyScript.retrieveSO();
+                        }
+                        yield return new WaitForSeconds(wave.spawnDelay);
                     }
-                    yield return new WaitForSeconds(wave.spawnDelay);
                 }
+                yield return new WaitForSeconds(wave.waveDelay);
             }
-            yield return new WaitForSeconds(wave.waveDelay);
         }
 
     }
