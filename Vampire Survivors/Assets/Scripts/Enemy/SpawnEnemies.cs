@@ -10,6 +10,10 @@ public class SpawnEnemies : MonoBehaviour
     public List<WaveSO> waves = new List<WaveSO>();
 
     public int waveCount = 0;
+    bool randomizedPos = false;
+
+    Vector2 randomDirection1;
+    float randomDistance1;
 
     private void Awake()
     {
@@ -60,16 +64,31 @@ public class SpawnEnemies : MonoBehaviour
 
                             chosenEnemy.transform.position = spawnPos;
                             chosenEnemy.SetActive(true);
+                            chosenEnemy.GetComponent<Walker>().enemyType = wave.waveType;
 
                             Enemy enemyScript = chosenEnemy.GetComponent<Enemy>();
 
                             enemyScript.enemySO = enemies.enemySO;
 
                             enemyScript.retrieveSO();
+                            print("Spawn");
+
+                            if(wave.waveType == 1)
+                            {
+                                if(!randomizedPos)
+                                {
+                                    randomDirection1 = Random.insideUnitCircle.normalized;
+                                    randomDistance1 = Random.Range(15, 30);
+                                    randomizedPos = true;
+                                }
+                                spawnPos = transform.position + (Vector3)(randomDirection1 * randomDistance1);
+                                chosenEnemy.transform.position = spawnPos * Random.Range(0, 0.3f);
+                            }
                         }
                         yield return new WaitForSeconds(wave.spawnDelay);
                     }
                 }
+                randomizedPos = false;
                 yield return new WaitForSeconds(wave.waveDelay);
             }
         }

@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WaveSO
   waveDelay: 3
   spawnDelay: 0.4
+  waveType: 0
   enemies:
   - amount: 20
     enemySO: {fileID: 11400000, guid: defa10bafc55115429e8c9144847f724, type: 2}
   - amount: 5
-    enemySO: {fileID: 11400000, guid: fac59cdd9b5d9aa47b1fab09321d0a5a, type: 2}
+    enemySO: {fileID: 11400000, guid: 8ac6e8cc2b1abd84b82dba8bd7d8165d, type: 2}

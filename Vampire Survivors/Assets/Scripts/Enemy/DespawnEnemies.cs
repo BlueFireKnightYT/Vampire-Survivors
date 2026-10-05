@@ -9,7 +9,11 @@ public class DespawnEnemies : MonoBehaviour
         coll = collision;
         if (collision.CompareTag("Enemy"))
         {
-            if (coll.gameObject.activeSelf)
+            if(collision.gameObject.GetComponent<Walker>().enemyType == 1)
+            {
+                collision.gameObject.SetActive(false);
+            }
+            else if (coll.gameObject.activeSelf)
                 await RespawnEnemy(coll);
             else
                 return;

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c802309b4bfa99d40965f5c6381cce1c, type: 3}
   m_Name: ThrowingAxeSO
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeSO
-  showcaseImage: {fileID: 7275576854423484050, guid: c3770850fb395d34aa7c2510cf23b306, type: 3}
+  showcaseImage: {fileID: -6640192087359475524, guid: 54a9c554350213346b1e49f0a734d5a2, type: 3}
   upgradeName: Throwing Axe
   descriptiom: 
   weaponID: ThrowingAxe

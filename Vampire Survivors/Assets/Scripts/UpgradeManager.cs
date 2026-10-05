@@ -66,26 +66,15 @@ public class UpgradeManager : MonoBehaviour
         }
     }
 
-    GameObject FindWeaponObject()
+    public void UpgradeButtonClick(GameObject clickedButton)
     {
-        GameObject clickedButton = EventSystem.current.currentSelectedGameObject;
         UpgradeCardUI clickedCard = clickedButton.GetComponent<UpgradeCardUI>();
 
         clickedCard.weapon = GameObject.FindGameObjectWithTag(clickedCard.weaponID);
 
-        return clickedCard.weapon;
-    }
+        IUpgradable upgradeInterface = clickedCard.weapon.GetComponent<IUpgradable>();
 
-    IUpgradable FindUpgradeInterface()
-    {
-        IUpgradable upgradeInterface = FindWeaponObject().GetComponent<IUpgradable>();
-
-        return upgradeInterface;
-    }
-
-    public void UpgradeButtonClick()
-    {
-        FindUpgradeInterface().Upgrade();
+        upgradeInterface.Upgrade();
 
         upgradeMenu.SetActive(false);
         Time.timeScale = 1;
