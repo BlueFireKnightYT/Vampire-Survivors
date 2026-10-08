@@ -20,6 +20,7 @@ public class PlayerHealth : MonoBehaviour, IDamagable
     // Update is called once per frame
     void Update()
     {
+        //Immunity frames
         remainingTime -= Time.deltaTime;
     }
 

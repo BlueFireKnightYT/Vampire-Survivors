@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c802309b4bfa99d40965f5c6381cce1c, type: 3}
   m_Name: RotatingWeaponSO
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeSO
-  showcaseImage: {fileID: 0}
+  showcaseImage: {fileID: 865117468632476218, guid: cf9d3ccec3455bd4c9cb2d7f09ffe484, type: 3}
   upgradeName: Rotating Weapon
   descriptiom: 
   weaponID: RotatingWeapon
