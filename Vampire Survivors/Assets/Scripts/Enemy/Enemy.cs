@@ -49,10 +49,10 @@ public class Enemy : MonoBehaviour, IDamagable, IAttacker, IDroppable //Dit is w
     {
         dropRate = enemySO.dropRate;
         baseHealth = enemySO.health;
-        maxHealth = baseHealth * (SpawnEnemies.instance.waveCount / 10f + 1);
+        maxHealth = baseHealth * (SpawnEnemies.instance.waveCount / 7f + 1f);
         health = maxHealth;
 
-        damage = enemySO.damage;
+        damage = enemySO.damage * (SpawnEnemies.instance.waveCount / 7f + 1f);
         animator.runtimeAnimatorController = enemySO.animator;
     }
 
@@ -72,7 +72,6 @@ public class Enemy : MonoBehaviour, IDamagable, IAttacker, IDroppable //Dit is w
         {
             if (collision.gameObject.TryGetComponent<IDamagable>(out playerDamagable))
                 DealDamage(damage, playerDamagable);
-
         }
     }
 

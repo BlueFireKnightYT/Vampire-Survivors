@@ -478,12 +478,9 @@ GameObject:
   - component: {fileID: 300731181}
   - component: {fileID: 300731180}
   - component: {fileID: 300731186}
-  - component: {fileID: 300731191}
-  - component: {fileID: 300731189}
   - component: {fileID: 300731190}
   - component: {fileID: 300731192}
-  - component: {fileID: 300731193}
-  - component: {fileID: 300731194}
+  - component: {fileID: 300731195}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -585,6 +582,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 540f0b3e-a526-4b71-9a29-750bcac6456c
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 300731195}
+        m_TargetAssemblyTypeName: uiFunctions, Assembly-CSharp
+        m_MethodName: Quit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d00e39ee-3a1f-405a-90e6-e39f54f6058a
+    m_ActionName: 'Player/Quit[/Keyboard/escape]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -766,24 +779,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &300731189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 300731179}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47c21a3bb901b5e43b720d1ce1465e60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  bulletPrefab: {fileID: 1363146915110925851, guid: a60de464b285ed641963775ce4e05faa, type: 3}
-  baseBulletAmount: 1
-  multiShotCooldown: 0.1
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!114 &300731190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -800,18 +795,6 @@ MonoBehaviour:
   neededXpMultiplier: 1.2
   xp: 0
   upgradeMenu: {fileID: 387413391}
---- !u!114 &300731191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 300731179}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d165445586c2afd478b5398d2ec1c216, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
 --- !u!114 &300731192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -824,7 +807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fed61f3194e8b3b41a1b1bea042e49a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
---- !u!114 &300731193
+--- !u!114 &300731195
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -833,28 +816,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 300731179}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d67a39e994935a44b9541ce188f5b724, type: 3}
+  m_Script: {fileID: 11500000, guid: 5aff9f8923a771245b2e95687a23e9c5, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PoolManager
-  PoolName: Bullet
-  poolLimit: 20
-  poolObject: {fileID: 1363146915110925851, guid: a60de464b285ed641963775ce4e05faa, type: 3}
-  objectPool: []
---- !u!114 &300731194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 300731179}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c3631d61e159374788e6cc88396ce0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  weaponData: {fileID: 0}
-  cooldown: 0
-  level: 1
+  m_EditorClassIdentifier: Assembly-CSharp::uiFunctions
 --- !u!1 &335786059
 GameObject:
   m_ObjectHideFlags: 0
@@ -3352,8 +3316,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 00:00
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 10c7d547ae57f784aba8cfaf779f254f, type: 2}
-  m_sharedMaterial: {fileID: 1820271578602097691, guid: 10c7d547ae57f784aba8cfaf779f254f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 14708f8299dc90447aa05c122405b3d8, type: 2}
+  m_sharedMaterial: {fileID: 3614165466101800382, guid: 14708f8299dc90447aa05c122405b3d8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3377,8 +3341,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 140
-  m_fontSizeBase: 140
+  m_fontSize: 94.2
+  m_fontSizeBase: 94.2
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

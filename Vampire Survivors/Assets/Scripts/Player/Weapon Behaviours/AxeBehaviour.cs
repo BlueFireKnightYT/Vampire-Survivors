@@ -7,7 +7,8 @@ public class AxeBehaviour : MonoBehaviour, IWeapon, IUpgradable
     private Weapon weapon;
 
     float damage;
-    int baseBulletAmount;
+    int baseBulletAmount = 1;
+    float multiShotCooldown;
 
     PoolManager poolManager;
 
@@ -23,6 +24,20 @@ public class AxeBehaviour : MonoBehaviour, IWeapon, IUpgradable
         weapon = owner;
     }
     public void Fire()
+    {
+        StartCoroutine(MultiShoot());
+    }
+    public IEnumerator MultiShoot()
+    {
+        int bulletAmount = baseBulletAmount;
+        while (bulletAmount > 0)
+        {
+            Shoot();
+            bulletAmount--;
+            yield return new WaitForSeconds(multiShotCooldown);
+        }
+    }
+    public void Shoot()
     {
         //enable axe prefab
         GameObject projectile = pooledObject();

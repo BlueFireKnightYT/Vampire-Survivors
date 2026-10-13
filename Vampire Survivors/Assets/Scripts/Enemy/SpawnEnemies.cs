@@ -45,10 +45,13 @@ public class SpawnEnemies : MonoBehaviour
         while (true)
         {
             waveCount++;
+            //wave
             foreach (WaveSO wave in waves)
             {
+                //enemy type
                 foreach (WaveEnemyData enemies in wave.enemies)
                 {
+                    //enemy
                     for (int i = 0; i < enemies.amount;)
                     {
                         Vector2 randomDirection = Random.insideUnitCircle.normalized;
