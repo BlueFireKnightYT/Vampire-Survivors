@@ -44,8 +44,7 @@ public class AxeBehaviour : MonoBehaviour, IWeapon, IUpgradable
         projectile.transform.position = transform.position;
         projectile.SetActive(true);
 
-        //give info Damage
-        projectile.GetComponent<ThrowingProjectile>().damage = damage;
+        projectile.GetComponent<BulletDamage>().damage = weaponData.damage;
         // get RB and add force
 
         float dir = Random.Range(-250, 250);
@@ -90,7 +89,7 @@ public class AxeBehaviour : MonoBehaviour, IWeapon, IUpgradable
         if (weapon.level < weaponData.maxLevel)
         {
             weapon.level++;
-            damage *= 1.2f;
+            damage *= 1.25f;
             weapon.cooldown *= 0.95f;
 
             int result = weapon.level % 2;

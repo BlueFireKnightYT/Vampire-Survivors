@@ -56,6 +56,7 @@ public class RotatingWeaponBehaviour : MonoBehaviour, IWeapon, IUpgradable
         {
             GameObject obj = projectiles[i];
             obj.SetActive(true);
+            obj.GetComponent<BulletDamage>().damage = damage;
 
             float initialAngle = i * angleStep;
 

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeSO
   showcaseImage: {fileID: 9139452411967119609, guid: 3ede2d7a629648845b53389581b3d69d, type: 3}
   upgradeName: Magic Missile
-  descriptiom: 
+  descriptiom: 'When upgraded: +20% Damage, -5% Cooldown, +1 projectile per 2 upgrades'
   weaponID: MagicMissileWeapon

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -8795064591462224149}
   - component: {fileID: 8334782763004470158}
   - component: {fileID: 2020712912303754331}
+  - component: {fileID: -473803024958278301}
   m_Layer: 8
   m_Name: Rotating Projectile
   m_TagString: Untagged
@@ -142,3 +143,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   damage: 0
+--- !u!114 &-473803024958278301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7042975378979473351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc7c45be1a5a0143a580b6a8b785a4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BulletDamage
+  damage: 0
+  canPierce: 1

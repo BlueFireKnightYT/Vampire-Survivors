@@ -1,22 +1,24 @@
 using UnityEngine;
 
-public class ThrowingProjectile : MonoBehaviour, IAttacker
+public class BulletDamage : MonoBehaviour
 {
     [HideInInspector] public float damage;
-
-    public void DealDamage(float damage, IDamagable target)
-    {
-        target.TakeDamage(damage);
-    }
-
+    public bool canPierce;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Get IDamagable
-        //Deal damage
         if (collision.CompareTag("Enemy"))
         {
             IDamagable target = collision.gameObject.GetComponent<IDamagable>();
             DealDamage(damage, target);
+            print(damage);
         }
+
+        if (!canPierce)
+            gameObject.SetActive(false);
+    }
+
+    public void DealDamage(float damage, IDamagable target)
+    {
+        target.TakeDamage(damage);
     }
 }

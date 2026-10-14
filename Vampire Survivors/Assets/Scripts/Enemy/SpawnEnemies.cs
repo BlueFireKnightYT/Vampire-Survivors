@@ -74,7 +74,6 @@ public class SpawnEnemies : MonoBehaviour
                             enemyScript.enemySO = enemies.enemySO;
 
                             enemyScript.retrieveSO();
-                            print("Spawn");
 
                             if(wave.waveType == 1)
                             {

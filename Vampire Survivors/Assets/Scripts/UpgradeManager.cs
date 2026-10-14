@@ -21,7 +21,8 @@ public class UpgradeManager : MonoBehaviour
 
     public void RetrieveUpgradeData()
     {
-
+        if (upgradeOptions.Count == 0)
+            upgradeMenu.SetActive(false);
         // kijkt of de weapon level meer dan 6 is, zo ja gaat die uit de list
         for (int i = upgradeOptions.Count - 1; i >= 0; i--)
         {
@@ -60,6 +61,7 @@ public class UpgradeManager : MonoBehaviour
             sessionPool.RemoveAt(randomIndex);
 
             dynamicCard.title.text = chosenUpgrade.upgradeName;
+            dynamicCard.description.text = chosenUpgrade.descriptiom;
             dynamicCard.image.sprite = chosenUpgrade.showcaseImage;
             dynamicCard.weaponID = chosenUpgrade.weaponID;
             dynamicCard.weapon = GameObject.FindGameObjectWithTag(chosenUpgrade.weaponID);

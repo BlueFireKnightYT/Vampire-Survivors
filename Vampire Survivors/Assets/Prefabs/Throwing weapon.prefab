@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4301553714663063977}
   - component: {fileID: -3854436744946191030}
   - component: {fileID: -8842416367234483526}
-  - component: {fileID: 5374672008507301922}
+  - component: {fileID: 1278626764815366595}
   m_Layer: 8
   m_Name: Throwing weapon
   m_TagString: Untagged
@@ -157,7 +157,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &5374672008507301922
+--- !u!114 &1278626764815366595
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -166,7 +166,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 3682186651412934377}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 604b72bb00c557e48b0e67d6ceabb1e7, type: 3}
+  m_Script: {fileID: 11500000, guid: dfc7c45be1a5a0143a580b6a8b785a4d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
+  m_EditorClassIdentifier: Assembly-CSharp::BulletDamage
   damage: 0
+  canPierce: 1

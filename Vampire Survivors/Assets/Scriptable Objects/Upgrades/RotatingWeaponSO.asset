@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeSO
   showcaseImage: {fileID: 865117468632476218, guid: cf9d3ccec3455bd4c9cb2d7f09ffe484, type: 3}
   upgradeName: Rotating Weapon
-  descriptiom: 
+  descriptiom: 'When upgraded: +20% damage, +0.5 seconds enabled, +1 projectile per
+    2 weapons'
   weaponID: RotatingWeapon

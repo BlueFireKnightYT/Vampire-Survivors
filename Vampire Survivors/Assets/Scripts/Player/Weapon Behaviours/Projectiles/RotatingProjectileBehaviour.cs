@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class RotatingProjectileBehaviour : MonoBehaviour, IAttacker
+public class RotatingProjectileBehaviour : MonoBehaviour
 {
     private Rigidbody2D playerRb;
     private float radius;
@@ -33,19 +33,5 @@ public class RotatingProjectileBehaviour : MonoBehaviour, IAttacker
         Vector3 offset = new Vector3(Mathf.Cos(currentAngle) * radius, Mathf.Sin(currentAngle) * radius, 0f);
 
         transform.position = (Vector3)playerRb.position + offset;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Enemy"))
-        {
-            IDamagable target = collision.gameObject.GetComponent<IDamagable>();
-            DealDamage(damage, target);
-        }
-    }
-
-    public void DealDamage(float damage, IDamagable target)
-    {
-        target.TakeDamage(damage);
     }
 }

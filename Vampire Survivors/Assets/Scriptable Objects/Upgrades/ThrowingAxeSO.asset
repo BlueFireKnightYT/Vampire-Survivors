@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeSO
   showcaseImage: {fileID: -6640192087359475524, guid: 54a9c554350213346b1e49f0a734d5a2, type: 3}
   upgradeName: Throwing Axe
-  descriptiom: 
+  descriptiom: 'When upgraded: +25% damage, -5% cooldown, +1 projectile per 2 upgrades'
   weaponID: ThrowingAxe

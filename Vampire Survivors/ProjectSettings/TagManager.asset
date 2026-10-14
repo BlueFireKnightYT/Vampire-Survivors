@@ -11,6 +11,7 @@ TagManager:
   - MagicMissileWeapon
   - ThrowingAxe
   - RotatingWeapon
+  - PulseWeapon
   layers:
   - Default
   - TransparentFX

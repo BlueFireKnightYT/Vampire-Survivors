@@ -63,7 +63,8 @@ public class MagicMissileWeapon : MonoBehaviour, IWeapon, IUpgradable
 
         bullet.SetActive(true);
 
-        bulletScript.damage = damage;
+        BulletDamage bd = bullet.GetComponent<BulletDamage>();
+        bd.damage = weaponData.damage;
     }
 
     Transform FindNearestEnemy()
