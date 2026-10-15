@@ -84,7 +84,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 9139452411967119609, guid: 3ede2d7a629648845b53389581b3d69d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -216,3 +216,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfc7c45be1a5a0143a580b6a8b785a4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletDamage
+  damage: 0
+  canPierce: 0

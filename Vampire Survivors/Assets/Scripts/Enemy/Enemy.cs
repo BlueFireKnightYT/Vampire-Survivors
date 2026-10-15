@@ -49,10 +49,10 @@ public class Enemy : MonoBehaviour, IDamagable, IAttacker, IDroppable //Dit is w
     {
         dropRate = enemySO.dropRate;
         baseHealth = enemySO.health;
-        maxHealth = baseHealth * (SpawnEnemies.instance.waveCount / 7f + 1f);
+        maxHealth = baseHealth * (SpawnEnemies.instance.waveCount / 5 + 1);
         health = maxHealth;
 
-        damage = enemySO.damage * (SpawnEnemies.instance.waveCount / 7f + 1f);
+        damage = enemySO.damage * (SpawnEnemies.instance.waveCount / 5 + 1);
         animator.runtimeAnimatorController = enemySO.animator;
     }
 
