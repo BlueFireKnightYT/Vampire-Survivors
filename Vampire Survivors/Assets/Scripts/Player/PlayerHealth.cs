@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour, IDamagable
@@ -41,6 +42,7 @@ public class PlayerHealth : MonoBehaviour, IDamagable
 
     public void Die() //IDamagable
     {
-        Destroy(this.gameObject);
+        StopAllCoroutines();
+        SceneManager.LoadScene("Start");
     }
 }
